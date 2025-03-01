@@ -19,12 +19,18 @@ git clone https://github.com/Rudrakumarpatel/Node.js-E-commerce-API.git
 cd Node.js-E-commerce-API
 npm install
 
+Running the Project
 
+npm server.js
+  OR
+npm start
+
+comman api : http://localhost:5000
 
 API Endpoints
 Authentication Routes
 1. User Registration
-URL: POST /api/auth/register
+URL: POST /user/register
 Request Body:
 {
   "name": "John Doe",
@@ -38,7 +44,7 @@ Response:
 }
 
 2. User Login
-URL: POST /api/auth/login
+URL: POST /user/login
 Request Body:
 {
   "email": "john@example.com",
@@ -56,7 +62,7 @@ Response:
 }
 
 3. Admin Login
-URL: POST /api/auth/admin-login
+URL: POST /admin/auth
 Request Body:
 {
   "email": "admin@example.com",
@@ -76,10 +82,10 @@ Response:
 
 User Routes
 4. Place an Order
-URL: POST /api/orders
+URL: POST /user/order
 Headers:
 {
-  "Authorization": "Bearer <token>",
+  "Authorization": " <token>",
   "Content-Type": "application/json"
 }
 Request Body:
@@ -104,11 +110,11 @@ Response:
 }
 
 5. View Order History
-URL: GET /api/orders
+URL: GET /user/orders
 Headers:
 
 {
-  "Authorization": "Bearer <token>"
+  "Authorization": " <token>"
 }
 Response:
 
@@ -127,7 +133,7 @@ Response:
 
 Product Routes
 6. Get All Products
-URL: GET /api/products
+URL: GET /user/products
 Response:
 
 [
@@ -141,7 +147,7 @@ Response:
 ]
 
 7. Get Product by ID
-URL: GET /api/products/:id
+URL: GET /user/products/:id
 Response:
 
 {
@@ -153,11 +159,11 @@ Response:
 }
 
 8. Add a Product (Admin)
-URL: POST /api/products
+URL: POST /admin/product
 Headers:
 
 {
-  "Authorization": "Bearer <admin-token>",
+  "Authorization": " <admin-token>",
   "Content-Type": "application/json"
 }
 Request Body:
@@ -176,10 +182,10 @@ Response:
 }
 
 9. Delete a Product (Admin)
-URL: DELETE /api/products/:id
+URL: DELETE /admin/product/:id
 Headers:
 {
-  "Authorization": "Bearer <admin-token>"
+  "Authorization": " <admin-token>"
 }
 Response:
 {
@@ -196,12 +202,13 @@ Response:
     "name": "Electronics"
   }
 ]
+
 11. Add a Category (Admin)
-URL: POST /api/categories
+URL: POST /admin/category
 Headers:
 
 {
-  "Authorization": "Bearer <admin-token>",
+  "Authorization": " <admin-token>",
   "Content-Type": "application/json"
 }
 Request Body:
@@ -218,11 +225,11 @@ Response:
 
 Admin Routes
 12. Get All Orders
-URL: GET /api/admin/orders
+URL: GET /admin/orders
 Headers:
 
 {
-  "Authorization": "Bearer <admin-token>"
+  "Authorization": " <admin-token>"
 }
 Response:
 
@@ -240,11 +247,11 @@ Response:
 ]
 
 13. Get Top Selling Products
-URL: GET /api/admin/top-selling
+URL: GET /admin/sales/top-products
 Headers:
 
 {
-  "Authorization": "Bearer <admin-token>"
+  "Authorization": " <admin-token>"
 }
 Response:
 
@@ -258,7 +265,7 @@ URL: GET /api/admin/top-selling-categories
 Headers:
 
 {
-  "Authorization": "Bearer <admin-token>"
+  "Authorization": "<admin-token>"
 }
 Response:
 
@@ -268,9 +275,12 @@ Edit
   { "categoryId": 1, "totalSold": 50 },
   { "categoryId": 2, "totalSold": 30 }
 ]
-Running the Project
 
-npm start
-For development mode:
 
-npm run dev
+.env file:
+PORT
+DB_HOST
+DB_USER
+DB_PASS
+DB_NAME
+JWT_SECRET
